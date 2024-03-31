@@ -1,5 +1,9 @@
+package;
+
+import lollipop.Engine;
+
 class Main {
-	static function main() {
-		trace("Hello, world!");
-	}
+    public static function main():Void {
+        Engine.init();
+    }
 }

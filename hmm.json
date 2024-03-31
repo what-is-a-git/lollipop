@@ -1,0 +1,11 @@
+{
+  "dependencies": [
+    {
+      "name": "reflaxe.cpp",
+      "type": "git",
+      "dir": null,
+      "ref": "nightly",
+      "url": "https://github.com/SomeRanDev/reflaxe.CPP.git"
+    }
+  ]
+}

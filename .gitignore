@@ -1,3 +1,7 @@
 ## Hidden folders ##
 .*/
 
+## Build Testing ##
+build/
+.sconsign.dblite
+**.o**

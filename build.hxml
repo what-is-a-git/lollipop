@@ -1,4 +1,5 @@
--cp src
--D analyzer-optimize
--main Main
---interp
+--class-path src
+--main Main
+
+--library reflaxe.cpp
+--define cpp-output=build

@@ -1,0 +1,14 @@
+{
+    "name": "lollipop",
+    "url": "https://github.com/what-is-a-git/lollipop/",
+    "license": "MIT",
+    "tags": ["cpp", "native"],
+    "description": "This library is useless in the same way on every platform.",
+    "version": "0.0.1",
+    "classPath": "src/",
+    "releasenote": "no release yet :)",
+    "contributors": ["what-is-a-git"],
+    "dependencies": {
+        "hmm": ""
+    }
+}
