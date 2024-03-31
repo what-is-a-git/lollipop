@@ -1,9 +1,9 @@
 package;
 
-import lollipop.Engine;
+import lollipop.App;
 
 class Main {
     public static function main():Void {
-        Engine.init();
+        new App(640, 480, 'Lollipop Testing');
     }
 }

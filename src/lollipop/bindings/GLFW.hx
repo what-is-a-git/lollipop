@@ -44,6 +44,15 @@ class GLFW {
     @:native('glfwDestroyWindow')
     public extern static function destroyWindow(window:Ptr<GLFWWindow>):Void;
 
+    @:native('glfwSetWindowTitle')
+    public extern static function setWindowTitle(window:Ptr<GLFWWindow>, title:ConstCharPtr):Void;
+
+    @:native('glfwGetWindowSize')
+    public extern static function getWindowSize(window:Ptr<GLFWWindow>, width:Ptr<Int>, height:Ptr<Int>):Void;
+
+    @:native('glfwSetWindowSize')
+    public extern static function setWindowSize(window:Ptr<GLFWWindow>, width:Int, height:Int):Void;
+
     @:native('glfwMakeContextCurrent')
     public extern static function makeContextCurrent(window:Ptr<GLFWWindow>):Void;
 
