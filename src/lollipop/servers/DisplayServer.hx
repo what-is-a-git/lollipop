@@ -2,17 +2,19 @@ package lollipop.servers;
 
 import lollipop.bindings.GL;
 import lollipop.bindings.GLFW;
-import lollipop.cxx.Helpers;
 import cxx.ConstCharPtr;
 import cxx.Ptr;
 import lollipop.objects.Window;
-import lollipop.interfaces.Server;
 
-class WindowServer implements Server {
+class DisplayServer {
     public static function init():Void {
         if (GLFW.init() != GLFW.TRUE) {
 			trace('Failed to start GLFW!');
 		}
+    }
+
+    public static function dispose():Void {
+        GLFW.terminate();
     }
 
     public static function createWindow(width:Int, height:Int, title:String):Window {
@@ -20,7 +22,7 @@ class WindowServer implements Server {
 		GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
 		GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
 
-		var native:Ptr<GLFWWindow> = GLFW.createWindow(width, height, ConstCharPtr.fromString(title), Helpers.c_nullptr(), Helpers.c_nullptr());
+		var native:Ptr<GLFWWindow> = GLFW.createWindow(width, height, ConstCharPtr.fromString(title), Ptr.Null, Ptr.Null);
 
         // Slight compiler weirdness but it's fine honestly.
 		if (untyped __cpp__('!{0}', native)) {
@@ -33,7 +35,24 @@ class WindowServer implements Server {
 
         GLFW.makeContextCurrent(native);
 		GL.load(GLFW.getProcAddress);
+        GLFW.swapInterval(0);
 
         return window;
+    }
+
+    public static function destroyWindow(window:Window):Void {
+        GLFW.destroyWindow(window.native);
+    }
+
+    public static function windowShouldClose(window:Window):Bool {
+        return GLFW.windowShouldClose(window.native);
+    }
+
+    public static function pollWindowEvents():Void {
+        GLFW.pollEvents();
+    }
+
+    public static function presentWindow(window:Window):Void {
+        GLFW.swapBuffers(window.native);
     }
 }
