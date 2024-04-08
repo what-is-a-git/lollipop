@@ -1,19 +1,21 @@
 package lollipop.servers;
 
+import lollipop.containers.Window;
 import lollipop.bindings.GL;
 import lollipop.bindings.GLFW;
 import cxx.ConstCharPtr;
 import cxx.Ptr;
-import lollipop.objects.Window;
 
 class DisplayServer {
     public static function init():Void {
         if (GLFW.init() != GLFW.TRUE) {
-			trace('Failed to start GLFW!');
+            Logs.error('Failed to start GLFW!');
+            Sys.exit(1);
 		}
     }
 
     public static function dispose():Void {
+        Logs.log('Terminating GLFW.');
         GLFW.terminate();
     }
 
@@ -26,7 +28,7 @@ class DisplayServer {
 
         // Slight compiler weirdness but it's fine honestly.
 		if (untyped __cpp__('!{0}', native)) {
-			trace('Failed to create window with GLFW!');
+			Logs.error('Failed to create window with GLFW!');
 			Sys.exit(1);
 		}
 

@@ -1,12 +1,13 @@
 package lollipop.servers;
 
-import lollipop.objects.Window;
+import lollipop.containers.Window;
 import lollipop.bindings.GL;
 
 class Engine {
 	public static var mainWindow:Window;
 
 	public static function init(params:EngineInitParameters):Void {
+		Logs.init();
 		DisplayServer.init();
 		mainWindow = DisplayServer.createWindow(params.width, params.height, params.initialTitle);
 
